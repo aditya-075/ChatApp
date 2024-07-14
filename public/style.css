@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+img {
+    width: 20px;
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    display: grid;
+    place-items: center;
+    background-color: #ebebeb;
+    padding: 20px;
+}
+
+.title {
+    margin: 20px 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.main {
+    border: 8px solid #dddddd;
+    border-radius: 14px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+}
+
+.name {
+    display: flex;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 8px 16px;
+    color: #7e7e7e;
+    background-color: #ebebeb;
+}
+
+.name > span {
+    color: #bbb;
+}
+
+.name-input {
+    font-size: 18px;
+    font-weight: 700;
+    color: #7e7e7e;
+    flex-grow: 1;
+    border: none;
+    margin: 0px 12px;
+    outline: none;
+    background-color: #ebebee;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    width: 100%;
+    height: 70vh;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.message-left, .message-right {
+    list-style: none;
+    padding: 8px 12px;
+    margin: 12px;
+    max-width: 80%;
+    font-size: 16px;
+    word-wrap: break-word;
+}
+
+.message-left {
+    border-radius: 20px 20px 20px 0px;
+    align-self: flex-start;
+    background: rgb(92, 92, 220);
+    box-shadow: -2px 2px 4px rgb(93, 93, 220);
+    color: white;
+}
+
+.message-right {
+    border-radius: 20px 20px 0px 20px;
+    align-self: flex-end;
+    background: #fff;
+    box-shadow: -2px 2px 4px #dcdcdc;
+}
+
+.message-left > p > span, .message-right > p > span {
+    display: block;     
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.feedback {
+    font-size: 14px;
+    text-align: center;
+    font-style: italic;
+    list-style: none;
+    padding: 0px 16px 16px 16px;
+    color: #2d2d2d;
+}
+
+.message-form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.message-input {
+    flex-grow: 1;
+    height: 48px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 0 17px;
+    background-color: #fff;
+}
+
+.send-button {
+    height: 48px;
+    font-size: 17px;
+    border: none;
+    padding: 0px 20px;
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.v-divider {
+    height: 40px;
+    width: 2px;
+    background-color: #f6f6f6;
+}
+
+.clients-total {
+    margin: 20px 0;
+    color: #767373;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .main {
+        border-width: 4px;
+        border-radius: 10px;
+    }
+
+    .name {
+        font-size: 20px;
+    }
+
+    .name-input {
+        font-size: 16px;
+    }
+
+    .message-left, .message-right {
+        font-size: 14px;
+        padding: 6px 10px;
+        margin: 8px;
+    }
+
+
+    .message-input {
+        font-size: 14px;
+        height:40px;
+    }
+
+    .send-button {
+        font-size: 15px;
+        padding: 0px 15px;
+        height: 40px;
+    }
+}
