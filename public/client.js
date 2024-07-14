@@ -39,10 +39,7 @@ socket.on('chat-message',(data)=>{
 
 function addMessageToUI(isOwnMessage,data){
     clearFeedback();
-    if(data.name===''){
-        alert("enter name");
-    }
-    else{
+    if(data.name!==''){
         const element = `
             <li class="${isOwnMessage ? "message-right" : "message-left"}">
                 <p class="message">
