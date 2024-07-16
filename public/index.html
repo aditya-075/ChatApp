@@ -8,24 +8,26 @@
     <title>Chat App</title>
 </head>
 <body>
+    
     <h1 class="title">Chat App <img src="chat2.png"></h1>
     <div class="main">
         <div class="name">
             <span><i class="far fa-user"></i></span>
-            <input type="text" class="name-input" id="name-input" placeholder="enter name" maxlength="20">
+            <input type="text" class="name-input" id="name-input" placeholder="enter name" readonly maxlength="20">
         </div>
         <ul class="message-container" id="message-container">
-            <!-- <li class="message-left">
+            <!-- <p class="username-left">Aditi</p>
+            <li class="message-left">
                 <p class="message">
-                    lorem ipsum
-                    <span>bluebird 26 July 10:40</span>
+                    <span>•26 July 10:40 ✓</span>
                 </p>
             </li>
 
+            <p class="username-right">Aditya</p>
             <li class="message-right">
                 <p class="message">
                     lorem ipsum
-                    <span>bluebird 26 July 10:40</span>
+                    <span>•26 July 10:42 ✓</span>
                 </p>
             </li>
 
@@ -46,6 +48,19 @@
         </form>
     </div>
     <h3 class="clients-total" id="clients-total">Active Clients : 2</h3>
+    <h3 class="view-participants" id="view-participants">view Participants</h3>
+    <div class="participantsList" id="participantsList">
+        <p>aditya</p>
+        <p>aditi</p>
+        <p>dadu</p>
+    </div>
+    <div class="blur-overlay" id="blur-overlay"></div>
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-content">
+            <input type="text" class="name-input joining" id="input-join" placeholder="enter name" maxlength="20">
+            <button class="join-btn" id="join-btn">Join</button>
+        </div>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
     <script src="client.js"></script>
