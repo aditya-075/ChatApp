@@ -6,9 +6,55 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(9px);
+    background-color: rgba(0, 0, 0, 0.3); /* Optional: adds a slight dimming effect */
+    display: none; /* Hidden by default */
+    z-index: 998; /* Just below the popup-overlay */
+}
+
+
+.popup-overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Set a percentage width */
+    max-width: 300px; /* Set a max-width for larger screens */
+    z-index: 1000;
+}
+.popup-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.join-btn{
+    height: 5vh;
+    border: none;
+    border-end-end-radius: 5px;
+    border-start-end-radius: 5px;
+    outline: none;
+    padding:0 1vw;
+    cursor: pointer;
+    background-color: rgb(66, 66, 215);
+    color: #fff;
+}
 
 img {
-    width: 20px;
+    width: 25px;
     max-width: 100%;
     height: auto;
 }
@@ -18,12 +64,14 @@ body {
     display: grid;
     place-items: center;
     background-color: #ebebeb;
-    padding: 20px;
+    padding : 0 20px;
+    padding-top: 10px;
+    
 }
 
 .title {
-    margin: 20px 0;
-    font-size: 24px;
+    /* background-color: red; */
+    font-size: 27px;
     text-align: center;
 }
 
@@ -33,6 +81,8 @@ body {
     overflow: hidden;
     width: 100%;
     max-width: 400px;
+    margin-top: 7px;
+    display: relative;
 }
 
 .name {
@@ -59,6 +109,10 @@ body {
     background-color: #ebebee;
 }
 
+.joining{
+    background-color: #fff;
+}
+
 .message-container {
     display: flex;
     flex-direction: column;
@@ -70,13 +124,47 @@ body {
     overflow-x: hidden;
 }
 
-.message-left, .message-right {
+/* .username-left{
+    align-self: flex-start;
+    margin-left:20px;
+    margin-bottom:-14px;
+    font-weight: 600;
+}
+
+.username-right{
+    align-self: flex-end;
+    margin-right:20px;
+    margin-bottom:-14px;
+    font-weight: 600;
+} */
+
+.message{
+    display: flex;
+    line-height: 1.16;
+}
+
+/* .message-left, .message-right {
     list-style: none;
     padding: 8px 12px;
     margin: 12px;
     max-width: 80%;
     font-size: 16px;
     word-wrap: break-word;
+} */
+.message-left, .message-right {
+    list-style: none;
+    padding: 12px 16px; /* Increased padding */
+    margin: 12px;
+    min-width: 35%;
+    font-size: 16px;
+    word-wrap: break-word;
+    position: relative; /* Added for positioning the time */
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.message-left > p, .message-right > p {
+    margin-bottom: 15px; /* Add space for the time */
+    word-break: break-word; /* Allow breaking of long words */
 }
 
 .message-left {
@@ -85,6 +173,7 @@ body {
     background: rgb(92, 92, 220);
     box-shadow: -2px 2px 4px rgb(93, 93, 220);
     color: white;
+    margin-bottom: 7px;
 }
 
 .message-right {
@@ -94,13 +183,35 @@ body {
     box-shadow: -2px 2px 4px #dcdcdc;
 }
 
+/* .message-left > p > span, .message-right > p > span {
+    display: block;     
+    font-size: 11px;
+    margin: -7px 25px;
+    /* background-color: red; 
+    align-self: end;
+    margin-right: -2px;
+} */
 .message-left > p > span, .message-right > p > span {
     display: block;     
-    font-size: 12px;
-    margin-top: 4px;
+    font-size: 11px;
+    position: absolute;
+    bottom: 4px;
+    right: 8px;
+    margin: 0;
+    max-width: 100%; /* Ensure time doesn't overflow */
+    text-align: right; /* Align time to the right */
+    
+}
+/* .message-left > h6, .message-right > h6{
+    font-size: 14px;
+} */
+.message-left > h6, .message-right > h6 {
+    font-size: 14px;
+    margin-bottom: 4px; /* Add space between username and message */
+    color: beige;
 }
 
-.feedback {
+.message-feedback{
     font-size: 14px;
     text-align: center;
     font-style: italic;
@@ -142,7 +253,12 @@ body {
 }
 
 .clients-total {
-    margin: 20px 0;
+    margin: 17px 0;
+    color: #767373;
+    text-align: center;
+}
+
+.view-participants{
     color: #767373;
     text-align: center;
 }
@@ -151,8 +267,12 @@ body {
     .main {
         border-width: 4px;
         border-radius: 10px;
+        overflow: hidden;
+        margin-top: 7px;
     }
-
+    .message-container{
+        height: 60vh;
+    }
     .name {
         font-size: 20px;
     }
@@ -161,21 +281,53 @@ body {
         font-size: 16px;
     }
 
-    .message-left, .message-right {
+    /* .message-left, .message-right {
         font-size: 14px;
         padding: 6px 10px;
         margin: 8px;
+    } */
+    .message-left, .message-right {
+        font-size: 13px;
+        padding: 10px 12px;
+        margin: 6px;
+        max-width: 85%; /* Allow slightly wider messages on small screens */
     }
 
-
+    .message-left > p > span, .message-right > p > span {
+        font-size: 9px;
+    }
+    .message-left > h6, .message-right > h6 {
+        font-size: 13px; /* Reduce username font size */
+    }
     .message-input {
         font-size: 14px;
         height:50px;
     }
-
+    .message-input {
+        flex-grow: 1;
+        height:7.8vh;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        padding: 0 17px;
+        background-color: #fff;
+        width:70%;
+    }
+    
     .send-button {
-        font-size: 15px;
-        padding: 0px 15px;
-        height: 50px;
+        height:7.8vh;
+        font-size: 17px;
+        border: none;
+        padding: 0px 10px;
+        outline: none;
+        background-color: #fff;
+        cursor: pointer;
+    }
+    .joining{
+        height:6vh;
+    }
+    .join-btn{
+        height: 6vh;
+        width: 19vw;
     }
 }
